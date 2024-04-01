@@ -1,6 +1,7 @@
 import psycopg2
 
 
+# Create Table
 def create_table():
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
     cur = conn.cursor()
@@ -9,6 +10,7 @@ def create_table():
     conn.close()
 
 
+# Add Data
 def insert_data():
     name = input("Enter name: ")
     address = input("Enter address: ")
@@ -22,6 +24,7 @@ def insert_data():
     conn.close()
 
 
+# Delete Data
 def delete_data():
     student_id = input("Enter student id to be deleted: ")
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
@@ -42,6 +45,7 @@ def delete_data():
     conn.close()
 
 
+# Revise Data
 def update_data():
     student_id = input("Enter student id to be updated: ")
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
@@ -70,6 +74,7 @@ def update_data():
     conn.close()
 
 
+# Read Data
 def read_data():
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
     cur = conn.cursor()
@@ -80,6 +85,7 @@ def read_data():
     conn.close()
 
 
+# Menu Options
 while True:
     print("\n Welcome to the student database management system")
     print("1. Create table")

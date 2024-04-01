@@ -2,6 +2,23 @@ from tkinter import *
 from tkinter import ttk
 
 
+# Query Function
+def run_query(query, parameters=()):
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    cur = conn.cursor()
+    query_result = None
+    try:
+        cur.execute(query, parameters)
+        if query.lower().startswith('select'):
+            query_result = cur.fetchall()
+        conn.commit()
+    except psycopg2.Error as e:
+        messagebox.showerror("Database Error", str(e))
+    finally:
+        cur.close()
+        conn.close()
+    return query_result
+
 root = Tk()
 root.title("Student Management System")
 
