@@ -21,6 +21,36 @@ def insert_data():
     conn.commit()
     conn.close()
 
+
+def delete_data():
+    student_id = input("Enter student id to be deleted: ")
+    # connect to the database
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    cur = conn.cursor()
+    # confirm that student exists by making a query
+    # need to put a comma after student_id to make it a tuple - even with a single argument
+    cur.execute("select * from students where student_id=%s", (student_id,))
+    # this will return an entire row of the student with the given student_id
+    student = cur.fetchone()
+    # does student row exist?
+    if student:
+        # if student exists, delete the student
+        print(f"Student to be delete: ID: {student[0]}, Name: {student[1]}, Address: {student[2]}, Age: {student[3]}, Number: {student[4]}")
+        # confirm deletion
+        choice = input("Are you sure you want to delete this student? (y/n): ")
+        # make answer lowercase
+        if choice.lower() == "y":
+            cur.execute("delete from students where student_id=%s", (student_id,))
+            print("Student deleted successfully")
+        else:
+            print("Student not deleted")
+    else:
+        print("Student not found")
+    # commit and close connection
+    conn.commit()
+    conn.close()
+
+
 def update_data():
     student_id = input("Enter student id to be updated: ")
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
@@ -49,4 +79,5 @@ def update_data():
     conn.close()
 
 # insert_data()
-update_data()
+# update_data()
+delete_data()
