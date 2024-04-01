@@ -69,7 +69,7 @@ N/A
 <a id='screenshots'></a>
 ## Screenshots/Gifs:
 
-<img src="https://github.com/jenstem/space_invasion/blob/main/space-invasion-ezgif.com-video-to-gif-converter.gif" width=1000>
+<img src="https://github.com/jenstem/postgresql-database/blob/main/postgresqldb.gif" width=1000>
 
 <a id='contact'></a>
 ## Contact Me
