@@ -1,8 +1,10 @@
 import psycopg2
 
 
-# Create Table
 def create_table():
+    """
+    Create a table named 'students' in the database.
+    """
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
     cur = conn.cursor()
     cur.execute("create table students(student_id serial primary key, name text, address text, age int, number text);")
@@ -10,8 +12,10 @@ def create_table():
     conn.close()
 
 
-# Add Data
 def insert_data():
+    """
+    Insert a new student record into the database.
+    """
     name = input("Enter name: ")
     address = input("Enter address: ")
     age = input("Enter age: ")
@@ -24,8 +28,10 @@ def insert_data():
     conn.close()
 
 
-# Delete Data
 def delete_data():
+    """
+    Delete a student record from the database based on student ID.
+    """
     student_id = input("Enter student id to be deleted: ")
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
     cur = conn.cursor()
@@ -45,8 +51,10 @@ def delete_data():
     conn.close()
 
 
-# Revise Data
 def update_data():
+    """
+    Update an existing student record in the database.
+    """
     student_id = input("Enter student id to be updated: ")
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
     cur = conn.cursor()
@@ -74,8 +82,10 @@ def update_data():
     conn.close()
 
 
-# Read Data
 def read_data():
+    """
+    Read and display all student records from the database.
+    """
     conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
     cur = conn.cursor()
     cur.execute("select * from students;")
