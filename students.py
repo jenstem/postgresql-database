@@ -5,7 +5,7 @@ def create_table():
     """
     Create a table named 'students' in the database.
     """
-    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='XXXXX', host='localhost', port='5432')
     cur = conn.cursor()
     cur.execute("create table students(student_id serial primary key, name text, address text, age int, number text);")
     conn.commit()
@@ -20,7 +20,7 @@ def insert_data():
     address = input("Enter address: ")
     age = input("Enter age: ")
     number = input("Enter phone number: ")
-    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='XXXXX', host='localhost', port='5432')
     cur = conn.cursor()
     cur.execute("insert into students(name, address, age, number) values (%s, %s, %s, %s)", (name, address, age, number))
     print("Data added successfully")
@@ -33,7 +33,7 @@ def delete_data():
     Delete a student record from the database based on student ID.
     """
     student_id = input("Enter student id to be deleted: ")
-    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='XXXXX', host='localhost', port='5432')
     cur = conn.cursor()
     cur.execute("select * from students where student_id=%s", (student_id,))
     student = cur.fetchone()
@@ -56,7 +56,7 @@ def update_data():
     Update an existing student record in the database.
     """
     student_id = input("Enter student id to be updated: ")
-    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='XXXXX', host='localhost', port='5432')
     cur = conn.cursor()
     fields = {
         "1": ("name", "Enter new name: "),
@@ -86,7 +86,7 @@ def read_data():
     """
     Read and display all student records from the database.
     """
-    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='Coopercooper12', host='localhost', port='5432')
+    conn = psycopg2.connect(dbname='studentdb', user='postgres', password='XXXXX', host='localhost', port='5432')
     cur = conn.cursor()
     cur.execute("select * from students;")
     students = cur.fetchall()
